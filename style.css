@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+img {
+  display: block;
+}
+
+main {
+  display: grid;
+  place-items: center;
+
+  /*z-index and position are written to only affect background color*/
+  background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+  position: relative;
+
+  overflow: hidden;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+
+  max-width: 1600px;
+
+  display: grid;
+  grid-template:
+    "logo img" auto
+    "info img" 1fr
+    / minmax(45%, 1fr) auto;
+}
+
+.container__logo {
+  grid-area: logo;
+  padding: 3.5em 0;
+  position: relative;
+}
+
+.logo__box {
+  width: 70%;
+  margin: 0 auto;
+
+  display: flex;
+}
+
+.logo__box__inner {
+  flex-basis: 445px;
+}
+
+.container__logo #back__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  z-index: -1;
+}
+
+.container__info {
+  grid-area: info;
+  padding: 3.5em 0 2em;
+}
+.info__box {
+  margin: 0 auto;
+  width: 70%;
+
+  display: flex;
+}
+
+.info__box__inner {
+  flex-basis: 445px;
+}
+
+.info__box__inner h1 {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 4rem;
+  letter-spacing: 17px;
+}
+.info__box__inner h1 span {
+  font-weight: 300;
+  color: hsl(0, 36%, 70%);
+}
+
+.info__box__inner > p {
+  font-weight: 600;
+  letter-spacing: -0.12px;
+  line-height: 28px;
+  padding: 1.2em 0 2em;
+  color: hsl(0, 36%, 70%);
+}
+
+.container__image {
+  grid-area: img;
+  height: 100vh;
+}
+
+.container__image img {
+  min-height: 100%;
+}
+
+#hero-mobile {
+  display: none;
+}
+
+.container__submit-box {
+  margin-right: 0.5em;
+}
+
+.submit-box__inner {
+  box-shadow: 0 0 0 1px hsl(0, 36%, 70%) inset;
+
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.submit-box__inner input {
+  outline: none;
+  border: none;
+
+  flex-grow: 1;
+  margin: 0 1.87em;
+  height: 35px;
+  background-color: transparent;
+}
+
+.submit-box__inner input::placeholder {
+  color: hsl(0, 36%, 70%);
+}
+
+.submit-box__inner .error-icon {
+  margin-right: 0.2em;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+
+.submit-box__inner .error-icon.active {
+  opacity: 1;
+}
+
+.submit-box__inner .submit-button {
+  background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+  width: 100px;
+  height: 55px;
+  border-radius: 40px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.submit-box__inner .submit-button:hover {
+  background: linear-gradient(135deg, hsl(0, 80%, 82%), hsl(0, 74%, 70%));
+}
+.submit-box__inner .submit-button.active {
+  background: linear-gradient(90deg, hsl(356, 74%, 88%), hsl(353, 90%, 82%));
+}
+
+.error-message {
+  display: none;
+
+  text-align: start;
+  padding-top: 0.625em;
+  padding-left: 1.87em;
+  color: hsl(0, 93%, 68%);
+}
+
+.error-message p {
+  font-size: 14px;
+  letter-spacing: -0.4px;
+}
+
+/*Mobile*/
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+
+    grid-template:
+      "logo" auto
+      "img" auto
+      "info" 1fr
+      /1fr;
+  }
+  .container__logo {
+    padding: 2em 0;
+  }
+  .logo__box {
+    width: 82.93%;
+  }
+  .container__logo #back__image {
+    display: none;
+  }
+
+  .container__info {
+    padding-bottom: 5.5em;
+  }
+  .info__box {
+    width: 82.93%;
+  }
+  .info__box__inner {
+    flex-basis: auto;
+    text-align: center;
+  }
+
+  .info__box__inner h1 {
+    font-size: 2.5rem;
+    line-height: 40px;
+    letter-spacing: 10px;
+  }
+
+  .container__image {
+    width: 100%;
+    height: auto;
+  }
+  .container__image img {
+    width: 100%;
+    min-height: none;
+  }
+
+  #hero-desktop {
+    display: none;
+  }
+  #hero-mobile {
+    display: block;
+  }
+  .container__submit-box {
+    margin-right: 0;
+  }
+  .submit-box__inner input {
+    margin-right: 0;
+  }
+  .submit-box__inner .submit-button {
+    width: 64px;
+  }
+}
